@@ -39,6 +39,12 @@ module.exports = function(eleventyConfig) {
     .use(markdownItAnchor, opts)
   );
 
+  eleventyConfig.setTemplateFormats([
+    "md",
+    "css",
+    "scss"
+  ]);
+
   eleventyConfig.addFilter("markdownify", function(value) {
     const md = new markdownIt(options)
     return md.render(value)
@@ -48,7 +54,9 @@ module.exports = function(eleventyConfig) {
       "md",
       "njk",
       "html",
-      "liquid"
+      "liquid",
+      "css",
+      "js"
     ],
 
     // If your site lives in a different subdirectory, change this.
