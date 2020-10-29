@@ -3,6 +3,7 @@ const util = require('util')
 const CleanCSS = require("clean-css");
 
 module.exports = function(eleventyConfig) {
+  eleventyConfig.addPassthroughCopy("*.css");
 
   // https://www.11ty.io/docs/quicktips/inline-css/
   eleventyConfig.addFilter("cssmin", function(code) {
@@ -39,12 +40,6 @@ module.exports = function(eleventyConfig) {
     .use(markdownItAnchor, opts)
   );
 
-  eleventyConfig.setTemplateFormats([
-    "md",
-    "css",
-    "scss"
-  ]);
-
   eleventyConfig.addFilter("markdownify", function(value) {
     const md = new markdownIt(options)
     return md.render(value)
@@ -54,9 +49,7 @@ module.exports = function(eleventyConfig) {
       "md",
       "njk",
       "html",
-      "liquid",
-      "css",
-      "js"
+      "liquid"
     ],
 
     // If your site lives in a different subdirectory, change this.
